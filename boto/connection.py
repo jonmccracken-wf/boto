@@ -935,6 +935,7 @@ class AWSAuthConnection(object):
                             self.set_host_header(request)
                 boto.log.debug('Final headers: %s' % request.headers)
                 request.start_time = datetime.now()
+                boto.log.debug('THINGS!!!!! {} {} {}'.format(self.is_secure, request.path, request.host))
                 if callable(sender):
                     response = sender(connection, request.method, request.path,
                                       request.body, request.headers)
