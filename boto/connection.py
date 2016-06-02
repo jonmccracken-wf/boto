@@ -939,7 +939,7 @@ class AWSAuthConnection(object):
                 if callable(sender):
                     response = sender(connection, request.method, request.path,
                                       request.body, request.headers)
-                elif self.is_secure and request.path == "/":
+                elif self.is_secure and request.path.startswith("/"):
                     # Work-around for secure connections coming out of appengine.
                     # If the request is secure, and our path is "/", appengine
                     # forces the protocol to be http://. This causes issues
